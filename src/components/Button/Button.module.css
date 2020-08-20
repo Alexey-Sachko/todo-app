@@ -1,0 +1,12 @@
+.button {
+  padding: 5px 15px;
+  background: transparent;
+  box-shadow: none;
+  border: none;
+  font-size: 16px;
+  transition: ease 0.2s box-shadow;
+}
+
+.button:hover {
+  box-shadow: inset 0px 0px 20px 0px rgba(255, 209, 209, 0.3);
+}

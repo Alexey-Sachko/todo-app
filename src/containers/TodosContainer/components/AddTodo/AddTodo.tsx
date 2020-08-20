@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { AddTodoFormState } from "./index";
+import Button from "../../../../components/Button/Button";
 
 type Props = {
   onAdd: (data: AddTodoFormState) => void;
@@ -27,7 +28,7 @@ const AddTodo = ({ onAdd }: Props) => {
           Text <input value={text} onChange={(e) => setText(e.target.value)} />
         </label>
       </div>
-      <button type="submit">submit</button>
+      <Button type="submit">submit</Button>
     </form>
   );
 };
