@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import PostsList from "./components/PostsList";
 import { PostsGate } from "./components/PostsList/PostsList";
 
 function App() {
+  const [postsIsOpen, setPostsIsOpen] = useState(false);
+
   return (
     <div>
-      <PostsList />
-      <PostsGate />
+      <button onClick={() => setPostsIsOpen((prev) => !prev)}>posts</button>
+      {postsIsOpen && (
+        <div>
+          <PostsList />
+          <PostsGate />
+        </div>
+      )}
     </div>
   );
 }
