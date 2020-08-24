@@ -1,0 +1,10 @@
+.container {
+  background: #eec0c6;
+  min-height: 400px;
+}
+
+.header {
+  border-bottom: 1px solid #999;
+  padding: 10px 20px;
+  font-size: 20px;
+}
