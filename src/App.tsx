@@ -3,6 +3,7 @@ import PostsList from "./components/PostsList";
 import { PostsGate } from "./components/PostsList/PostsList";
 import TodosContainer from "./containers/TodosContainer";
 import BoardContainer from "./containers/BoardContainer";
+import Tree from "./containers/Tree";
 
 function App() {
   const [postsIsOpen, setPostsIsOpen] = useState(false);
@@ -18,6 +19,7 @@ function App() {
       )}
       <TodosContainer />
       <BoardContainer />
+      <Tree />
     </div>
   );
 }
