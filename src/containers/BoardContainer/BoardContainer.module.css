@@ -8,3 +8,8 @@
   padding: 10px 20px;
   font-size: 20px;
 }
+
+.columnsContainer {
+  display: flex;
+  padding: 15px;
+}
