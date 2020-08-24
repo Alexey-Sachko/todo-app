@@ -1,26 +1,24 @@
-import React, { useState } from "react";
-import PostsList from "./components/PostsList";
-import { PostsGate } from "./components/PostsList/PostsList";
-import TodosContainer from "./containers/TodosContainer";
-import BoardContainer from "./containers/BoardContainer";
-import Tree from "./containers/Tree";
+import React from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import MainPage from "./pages/MainPage";
+import OtherPage from "./pages/OtherPage/OtherPage";
 
 function App() {
-  const [postsIsOpen, setPostsIsOpen] = useState(false);
-
   return (
-    <div>
-      <button onClick={() => setPostsIsOpen((prev) => !prev)}>posts</button>
-      {postsIsOpen && (
-        <div>
-          <PostsList />
-          <PostsGate />
-        </div>
-      )}
-      <TodosContainer />
-      <BoardContainer />
-      <Tree />
-    </div>
+    <Router>
+      <div>
+        <Link to="/">Home</Link>
+        <Link to="/other">Other</Link>
+      </div>
+      <Switch>
+        <Route path="/">
+          <MainPage />
+        </Route>
+        <Route path="/other">
+          <OtherPage />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
