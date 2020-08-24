@@ -1,12 +1,27 @@
 import React from "react";
+import clsx from "clsx";
 import style from "./Button.module.css";
 
-type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
+type ButtonVariant = "default" | "outlined" | "contained";
+type Color = "default" | "primary" | "secondary";
+
+export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+  variant?: ButtonVariant;
+  color?: Color;
+};
 
 const Button = (props: ButtonProps) => {
-  const { className, ...spread } = props;
+  const {
+    className,
+    variant = "default",
+    color = "default",
+    ...spread
+  } = props;
+  const isDefaultPrimary = color === "primary" && variant === "default";
 
-  const resultClassName = [style.button, className].filter(Boolean).join(" ");
+  const resultClassName = clsx([style.button, className], {
+    [style["button-primary"]]: isDefaultPrimary,
+  });
 
   return <button className={resultClassName} {...spread} />;
 };

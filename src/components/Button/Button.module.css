@@ -4,9 +4,17 @@
   box-shadow: none;
   border: none;
   font-size: 16px;
-  transition: ease 0.2s box-shadow;
+  color: rgba(0, 0, 0, 0.87);
 }
 
 .button:hover {
-  box-shadow: inset 0px 0px 20px 0px rgba(255, 209, 209, 0.3);
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+.button-primary {
+  color: #1976d2;
+}
+
+.button-secondary {
+  color: rgb(220, 0, 78);
 }
