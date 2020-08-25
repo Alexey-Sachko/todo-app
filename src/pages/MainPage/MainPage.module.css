@@ -12,7 +12,7 @@
 }
 
 .leftSide {
-  width: 200px;
+  min-width: 200px;
   background: #eee;
 }
 
@@ -21,7 +21,7 @@
 }
 
 .rightSide {
-  width: 200px;
+  min-width: 200px;
   background: #eee;
 }
 

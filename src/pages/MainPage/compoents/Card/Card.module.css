@@ -1,4 +1,9 @@
+.shadow {
+  background: #bbb;
+}
+
 .container {
+  width: 200px;
   background: #fff;
   margin-top: 5px;
   padding: 10px;
