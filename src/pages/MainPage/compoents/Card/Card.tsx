@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import styles from "./Card.module.css";
+import { getCoords } from "./utils";
 
 type CardProps = {
   title: string;
@@ -13,19 +14,22 @@ const Card = ({ title, onDrop }: CardProps) => {
   const mouseDownHandler = (e: React.MouseEvent) => {
     setIsActive(true);
     const dragEl = draggableRef.current;
-    let xOffset = 0;
-    let yOffset = 0;
+
+    let shiftX = 0;
+    let shiftY = 0;
 
     if (dragEl) {
-      xOffset = e.clientX - dragEl.offsetLeft;
-      yOffset = e.clientY - dragEl.offsetTop;
-      setCoords(dragEl, e.clientX - xOffset, e.clientY - yOffset);
+      const coords = getCoords(dragEl);
+      shiftX = e.pageX - coords.left;
+      shiftY = e.pageY - coords.top;
+
+      setCoords(dragEl, e.clientX - shiftX, e.clientY - shiftY);
     }
 
     const mouseMoveHandler = (e: MouseEvent) => {
       if (dragEl) {
         const { clientX, clientY } = e;
-        setCoords(dragEl, clientX - xOffset, clientY - yOffset);
+        setCoords(dragEl, clientX - shiftX, clientY - shiftY);
       }
     };
 
@@ -47,7 +51,7 @@ const Card = ({ title, onDrop }: CardProps) => {
         className={styles.container}
         onMouseDown={mouseDownHandler}
         style={{
-          position: isActive ? "fixed" : "static",
+          position: isActive ? "absolute" : "static",
         }}
       >
         {title} {isActive && "active"}
