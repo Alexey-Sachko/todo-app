@@ -3,9 +3,10 @@ import styles from "./Card.module.css";
 
 type CardProps = {
   title: string;
+  onDrop?: (x: number, y: number) => void;
 };
 
-const Card = ({ title }: CardProps) => {
+const Card = ({ title, onDrop }: CardProps) => {
   const draggableRef = useRef<HTMLDivElement | null>(null);
   const [isActive, setIsActive] = useState(false);
 
@@ -30,6 +31,7 @@ const Card = ({ title }: CardProps) => {
 
     const mouseUpHandler = (e: MouseEvent) => {
       setIsActive(false);
+      onDrop && onDrop(e.clientX, e.clientY);
       document.removeEventListener("mouseup", mouseUpHandler);
       document.removeEventListener("mousemove", mouseMoveHandler);
     };
